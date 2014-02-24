@@ -1,7 +1,7 @@
-
   Journal de bord du projet de fouille de données:
   
   problèmes rencontrés le long du projet :
     - lors de l ouverture du fichier csv sous knime, probleme de balisage qui rend le fichier impossible a importer sous knime
       certaines lignes n'ont pas leur balises <a> sous ""
+      solution: cntl + 'f' -> replaceall sur notepad ++ ( remplacer les \t<a par \t"<a et les <\a>\t par <\a>"\t
   
