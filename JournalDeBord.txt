@@ -5,3 +5,13 @@
       certaines lignes n'ont pas leur balises <a> sous ""
       solution: cntl + 'f' -> replaceall sur notepad ++ ( remplacer les \t<a par \t"<a et les <\a>\t par <\a>"\t
   
+    - certane photos ont ete uploadees avant d etre prises
+      on a choisit de les ecarter via un script python ( a ajouter le nombre de ligne ecartees)
+      
+    - dates de prise ou de post incoherentes annees impossible (annee avant l invention de la photo ou dans l avenir, jour impossible pour le mois donne, 24 <heure<0, 60<minutes< 0)
+    
+    -les auteurs ont une syntaxe particuliere :YYYYYYYY@NYY
+    
+    -attention au format des post qui ne sont pas forcement dans une langue intelligible pour les claviers francais (chinois, japonais ...)
+    
+google
