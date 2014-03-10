@@ -26,7 +26,11 @@ def genMap():
     data = csv.DictReader(open(config.csv_file_name, "rb"), dialect=FlickrDialect())
     for i, row in enumerate(data):
         if i % 100 == 0:
-            tmap.setpoint((row['latitude'], row['longitude'], row['legend']))
+            legend = """<ul>
+            <li><strong>Legend</strong>: {}</li>
+            <li><strong>Tags</strong>: {}</li>
+            </ul>""".format(row['legend'], row['hashtags'])
+            tmap.setpoint((row['latitude'], row['longitude'], legend))
     gmap = pymaps.PyMap(maplist=[tmap])
 
     return gmap.pymapjs()
