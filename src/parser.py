@@ -20,7 +20,7 @@ class FlickrDialect(csv.Dialect):
 
 def genMap():
     tmap = pymaps.Map()
-    tmap.zoom = 10.5
+    tmap.zoom = 11
     tmap.center = (45.75972, 4.84222)
 
     data = csv.DictReader(open(config.csv_file_name, "rb"), dialect=FlickrDialect())
