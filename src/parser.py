@@ -18,13 +18,17 @@ class FlickrDialect(csv.Dialect):
     quoting = csv.QUOTE_NONE
     skipinitialspace = False
 
-def parse():
-    data = csv.DictReader(open(config.csv_file_name, "rb"), dialect=FlickrDialect())
-
 def genMap():
     tmap = pymaps.Map()
-    tmap.zoom = 3
+    tmap.zoom = 10.5
+    tmap.center = (45.75972, 4.84222)
+
+    data = csv.DictReader(open(config.csv_file_name, "rb"), dialect=FlickrDialect())
+    for i, row in enumerate(data):
+        if i % 100 == 0:
+            tmap.setpoint((row['latitude'], row['longitude']))
     gmap = pymaps.PyMap(maplist=[tmap])
+
     return gmap.pymapjs()
 
 if __name__ == "__main__":

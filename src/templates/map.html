@@ -6,9 +6,13 @@
     </script>
 {% endblock %}
 
+{% block style %}
+    <link href="/static/css/map.css" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
     <h1>Hello World, I'm a map.</h1>
-    <div id="map" style="width: 1000px; height:800px;"></div>
+    <div id="map"></div>
 {% endblock %}
 
 {% block headjs %}
