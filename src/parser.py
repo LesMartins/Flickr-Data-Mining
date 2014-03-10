@@ -11,11 +11,11 @@ def initdb(db):
 
 class FlickrDialect(csv.Dialect):
     delimiter = "\t"
-    quotechar = None
+    quotechar = '"'
     escapechar = None
     doublequote = None
     lineterminator = "\r\n"
-    quoting = csv.QUOTE_NONE
+    quoting = csv.QUOTE_ALL
     skipinitialspace = False
 
 def genMap():
@@ -26,7 +26,7 @@ def genMap():
     data = csv.DictReader(open(config.csv_file_name, "rb"), dialect=FlickrDialect())
     for i, row in enumerate(data):
         if i % 100 == 0:
-            tmap.setpoint((row['latitude'], row['longitude']))
+            tmap.setpoint((row['latitude'], row['longitude'], row['legend']))
     gmap = pymaps.PyMap(maplist=[tmap])
 
     return gmap.pymapjs()
