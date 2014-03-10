@@ -28,3 +28,5 @@
       
     - une photo a ete localisee en 0 0 
       on considere que les photos sont censees etre prises dans la zone du bassin lyonais, la photo en 0 0 est donc ecartee
+      
+      -environ 30 clusters
