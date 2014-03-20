@@ -1,0 +1,69 @@
+%ifdef TWOSIDE
+    %\documentclass[a4paper,12pt,final,twoside,openright]{book}
+%elif ONESIDE
+    \documentclass[a4paper,12pt,final,oneside]{book}
+%endif
+
+\usepackage{rapport}
+
+
+\newcommand{\reporttitle}{Fouille de données}
+\newcommand{\enseignants}{Jean-François~\textsc{Boulicaut}\\ Mehdi~\textsc{Kaytoue}}
+\newcommand{\reportauthor}{Aline~\textsc{Martin}\\ Martin~\textsc{Wetterwald}}
+\newcommand{\reportsubject}{Livrable de projet}
+\newcommand{\stagetopic}{Flickr~--~Découverte de points d'intérêt}
+\newcommand{\dateperiod}{du 24 février au 24 mars 2014}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\setlength{\parskip}{1ex} % Espace entre les paragraphes
+
+\hypersetup{
+    pdftitle={\reporttitle},%
+        pdfauthor={\reportauthor},%
+        pdfsubject={\reportsubject},%
+        pdfkeywords={INSA Lyon} {Fouille} {données}
+}
+
+\title{\reporttitle}
+\author{\reportauthor}
+
+
+\begin{document}
+    \renewcommand{\chaptername}{} %\renewcommand{\thechapter}{}
+    \renewcommand{\contentsname}{Sommaire}
+
+    \pagestyle{empty}
+    \pagenumbering{Roman}
+
+    \include{title}
+
+    %ifdef TWOSIDE
+        %\cleardoublepage
+    %endif
+
+    %\include{title2}
+
+    %ifdef TWOSIDE
+        %  \newpage
+        %   \null
+        %   \vfill
+    %endif
+
+
+    \sloppy          % Justification moins stricte : des mots ne dépasseront pas des paragraphes
+
+    \frontmatter
+        \pagestyle{empty}
+        \tableofcontents
+        \addtocontents{toc}{\protect\thispagestyle{empty}}
+
+    \mainmatter
+    \pagestyle{headings}
+
+    \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter.\ #1}}{}}
+    \renewcommand{\sectionmark}[1]{\markright{\thesection{} #1}}
+
+
+    \include{preparation}
+    \include{visualisation}
+
+\end{document}
