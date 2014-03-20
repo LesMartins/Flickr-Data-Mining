@@ -24,8 +24,12 @@ def genMap():
     tmap.center = (45.75972, 4.84222)
 
     data = csv.DictReader(open(config.csv_file_name, "rb"), dialect=FlickrDialect())
+    l1,l2 = list(), list()
     for i, row in enumerate(data):
         if i % 100 == 0:
+            l1.append([row['latitude'], row['longitude']])
+            l2.append(row)
+
             legend = """<ul>
             <li><strong>Legend</strong>: {}</li>
             <li><strong>Tags</strong>: {}</li>
