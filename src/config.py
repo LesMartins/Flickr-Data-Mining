@@ -2,4 +2,4 @@
 # -*- coding: utf-8 -*-
 
 db_name = 'FlickrDM'
-csv_file_name = 'sujet/flickr.csv'
+csv_file_name = 'sujet/flickr_cleaned.csv'

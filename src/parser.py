@@ -10,7 +10,7 @@ def initdb(db):
     db.drop_database(config.db_name)
 
 class FlickrDialect(csv.Dialect):
-    delimiter = "\t"
+    delimiter = ","
     quotechar = '"'
     escapechar = None
     doublequote = None
