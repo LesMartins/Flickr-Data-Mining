@@ -11,15 +11,15 @@ def meanShift():
 
     data = csv.DictReader(open(config.csv_file_name, "rb"), dialect=parser.FlickrDialect())
     for i, row in enumerate(data):
-        if i % 10000 == 0:
+        if i % 1 == 0:
+            #attention a prendre un nombre suffisant de donnee pour que meanshift marche
             sublist = [float(row['latitude']), float(row['longitude'])]
             l1.append(sublist)
             l2.append(row)
 
+
     ss = StandardScaler(with_mean=False, with_std=False)
-    print l1
     test = ss.fit_transform(l1)
-    print test
     ms = MeanShift(bandwidth=0.001, bin_seeding=True, cluster_all=False, min_bin_freq=15)
     ms.fit(test)
 
