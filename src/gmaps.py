@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import math
+import random
 
 class GMaps:
 
@@ -50,12 +51,15 @@ class GMaps:
             new google.maps.Circle({
                 center: new google.maps.LatLng %s,
                 map: theMap,
-                radius: %d
-            });""" % (str(circle['coord']), circle['radius'])
+                radius: %d,
+                fillColor: '%s'
+            });""" % (str(circle['coord']), circle['radius'], circle['color'])
 
         return string
 
-
+def randomColor():
+    r = lambda: random.randint(0, 255)
+    return '#%02X%02X%02X' % (r(),r(),r())
 
 def genMap(centers, data):
     myMap = GMaps()
@@ -63,9 +67,15 @@ def genMap(centers, data):
     myMap.zoom = 11
 
     for i, row in enumerate(centers):
+        row['color'] = randomColor()
         myMap.circles.append({
             'coord': (float(row['x']), float(row['y'])),
-            'radius': 10 * math.sqrt(row['number'])
+            'radius': 10 * math.sqrt(row['number']),
+            'color': row['color']
             })
+
+    #for i, row in enumerate(data):
+    #    if i % 100 == 0:
+    #        myMap.points.append((float(row['latitude']), float(row['longitude'])))
 
     return myMap.js()
