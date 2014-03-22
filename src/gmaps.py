@@ -6,6 +6,7 @@ class GMaps:
     def __init__(self):
         self.center = (0, 0)
         self.points = []
+        self.circles = []
         self.zoom = 1
         self.div_id = 'map'
 
@@ -22,10 +23,12 @@ class GMaps:
             var theMap = new google.maps.Map(document.getElementById('%s'), options);
 
             %s
+
+            %s
         }
         google.maps.event.addDomListener(window, 'load', init);
     </script>
-    """ % (str(self.center), self.zoom, self.div_id, self._points())
+    """ % (str(self.center), self.zoom, self.div_id, self._points(), self._circles())
 
     def _points(self):
         string = ''
@@ -38,6 +41,18 @@ class GMaps:
 
         return string
 
+    def _circles(self):
+        string = ''
+        for circle in self.circles:
+            string += """
+            new google.maps.Circle({
+                center: new google.maps.LatLng %s,
+                map: theMap,
+                radius: %d
+            });""" % (str(circle['coord']), circle['radius'])
+
+        return string
+
 
 
 def genMap(centers, data):
@@ -46,6 +61,6 @@ def genMap(centers, data):
     myMap.zoom = 11
 
     for i, row in enumerate(centers):
-        myMap.points.append((float(row['x']), float(row['y'])))
+        myMap.circles.append({'coord': (float(row['x']), float(row['y'])), 'radius': 500})
 
     return myMap.js()
