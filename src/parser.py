@@ -1,13 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import mongoengine
 import config
 import csv
 import pymaps
-
-def initdb(db):
-    db.drop_database(config.db_name)
 
 class FlickrDialect(csv.Dialect):
     delimiter = ","
@@ -34,7 +30,3 @@ def genMap():
     gmap = pymaps.PyMap(maplist=[tmap])
 
     return gmap.pymapjs()
-
-if __name__ == "__main__":
-    db = mongoengine.connect(config.db_name)
-    initdb(db)
