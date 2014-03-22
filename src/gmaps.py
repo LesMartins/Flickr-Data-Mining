@@ -53,14 +53,26 @@ class GMaps:
 
     def _circles(self):
         string = ''
-        for circle in self.circles:
+        for i, circle in enumerate(self.circles):
             string += """
-            new google.maps.Circle({
+            var circle%d = new google.maps.Circle({
                 center: new google.maps.LatLng %s,
                 map: theMap,
                 radius: %d,
-                fillColor: '%s'
-            });""" % (str(circle['coord']), circle['radius'], circle['color'])
+                fillColor: '%s',
+                clickable: true
+            });""" % (i, str(circle['coord']), circle['radius'], circle['color'])
+
+            if 'info' in circle:
+                string += """
+                 var infowincircle%d = new google.maps.InfoWindow({
+                    content: "%s"
+                });
+                google.maps.event.addListener(
+                circle%d, 'click', function() {
+                    infowincircle%d.setPosition(circle%d.getCenter());
+                    infowincircle%d.open(theMap);
+                });""" % (i, circle['info'], i, i, i, i)
 
         return string
 
@@ -78,7 +90,8 @@ def genMap(centers, data):
         myMap.circles.append({
             'coord': (float(row['x']), float(row['y'])),
             'radius': 10 * math.sqrt(row['number']),
-            'color': '#%s' % (row['color'])
+            'color': '#%s' % (row['color']),
+            'info': "<h3>Cluster {}</h3><br />Number of elements: {}".format(row['cluster'], row['number'])
             })
 
     for i, row in enumerate(data):
