@@ -11,6 +11,8 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+#URL /map now generates a map with meanshift.
+#We could add another route and user another clustering algo.
 @app.route("/map")
 def map():
     the_map = gmaps.genMap(*cluster.meanShift())

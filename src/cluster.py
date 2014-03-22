@@ -29,12 +29,18 @@ def meanShift():
     labels_unique = numpy.unique(labels)
     n_clusters_ = len(labels_unique) - 1
 
+#We generate the list of dicts representing the center of our clusters.
+#cluster is the ID of the cluster
+#x and y are the coordinates for the center of this cluster
+#number is the number of points in that cluster
     centers = list()
     for i, row in enumerate(cluster_centers):
         centers.append({'cluster': i, 'x': row[0], 'y': row[1], 'number': labels.tolist().count(i)})
 
     points = list()
     for i, row in enumerate(X):
+#-1 means that the point doesn't belong to any cluster (has been rejected).
+#So we don't want to return these points and throw them away.
         if labels[i] != -1:
             l2[i]['cluster'] = labels[i]
             points.append(l2[i])

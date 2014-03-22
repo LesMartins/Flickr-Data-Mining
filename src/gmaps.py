@@ -4,6 +4,8 @@
 import math
 import random
 
+#Scroll down jeune padawan, this class is no meant to be modified ^^
+#Interesting code is at the bottom of the file. :p
 class GMaps:
 
     def __init__(self):
@@ -80,11 +82,16 @@ def randomColor():
     r = lambda: random.randint(0, 255)
     return '%02X%02X%02X' % (r(),r(),r())
 
+
+#Here is the intersting code to generate the map.
 def genMap(centers, data):
     myMap = GMaps()
+
+#We want to center the map on Lyon
     myMap.center = (45.75972, 4.84222)
     myMap.zoom = 11
 
+    #We first add circles (centers of clusters)
     for i, row in enumerate(centers):
         row['color'] = randomColor()
         myMap.circles.append({
@@ -94,6 +101,7 @@ def genMap(centers, data):
             'info': "<h3>Cluster {}</h3><br />Number of elements: <strong>{}</strong>".format(row['cluster'], row['number'])
             })
 
+    #And we add 1/100 of the points.
     for i, row in enumerate(data):
         if i % 100 == 0:
             myMap.points.append({
