@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% block javascript %}
-    <script>
-        window.onload=load();
-        window.onunload=GUnload();
-    </script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    {{the_map|safe}}
 {% endblock %}
 
 {% block style %}
@@ -16,5 +14,4 @@
 {% endblock %}
 
 {% block headjs %}
-{{the_map|safe}}
 {% endblock %}

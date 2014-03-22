@@ -1,21 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pymaps
+class GMaps:
+
+    def __init__(self):
+        self.center = (0, 0)
+        self.points = []
+        self.zoom = 1
+        self.div_id = 'map'
+
+    def js(self):
+        return """
+    <script type="text/javascript">
+        function init()
+        {
+            var mycenter = new google.maps.LatLng %s;
+            var options = {
+                zoom: %d,
+                center: mycenter
+            }
+            var theMap = new google.maps.Map(document.getElementById('%s'), options);
+        }
+        google.maps.event.addDomListener(window, 'load', init);
+    </script>
+    """ % (str(self.center), self.zoom, self.div_id)
+
 
 def genMap(centers, data):
-    tmap = pymaps.Map()
-    tmap.zoom = 11
-    tmap.center = (45.75972, 4.84222)
-
-    for i, row in enumerate(data):
-        if i % 100 == 0:
-            legend = """<ul>
-            <li><strong>Legend</strong>: {}</li>
-            <li><strong>Tags</strong>: {}</li>
-            </ul>""".format(row['legend'], row['hashtags'])
-            tmap.setpoint((row['latitude'], row['longitude'], legend))
-    gmap = pymaps.PyMap(maplist=[tmap])
-
-    return gmap.pymapjs()
-
+    myMap = GMaps()
+    myMap.center = (45.75972, 4.84222)
+    myMap.zoom = 11
+    return myMap.js()
