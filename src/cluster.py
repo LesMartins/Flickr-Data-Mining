@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import MeanShift, estimate_bandwidth
 import csv
 import config
 import numpy
 import parser
-from itertools import cycle
 
 def meanShift():
     l1, l2 = list(), list()
 
-    X = csv.DictReader(open(config.csv_file_name, "rb"), dialect=parser.FlickrDialect())
+    X = parser.parseFile(config.csv_file_name)
     for i, row in enumerate(X):
         #attention a prendre un nombre suffisant de donnee pour que meanshift marche
         sublist = [float(row['latitude']), float(row['longitude'])]

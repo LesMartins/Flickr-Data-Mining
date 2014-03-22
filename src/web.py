@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template
-import parser
+import gmaps
 import cluster
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ def home():
 
 @app.route("/map")
 def map():
-    the_map = parser.genMap(*cluster.meanShift())
+    the_map = gmaps.genMap(*cluster.meanShift())
     return render_template("map.html", the_map=the_map)
 
 if __name__ == "__main__":
