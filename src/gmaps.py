@@ -91,7 +91,7 @@ def genMap(centers, data):
             'coord': (float(row['x']), float(row['y'])),
             'radius': 10 * math.sqrt(row['number']),
             'color': '#%s' % (row['color']),
-            'info': "<h3>Cluster {}</h3><br />Number of elements: {}".format(row['cluster'], row['number'])
+            'info': "<h3>Cluster {}</h3><br />Number of elements: <strong>{}</strong>".format(row['cluster'], row['number'])
             })
 
     for i, row in enumerate(data):

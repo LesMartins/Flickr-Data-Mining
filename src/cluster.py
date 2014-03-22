@@ -20,7 +20,7 @@ def meanShift():
 
     ss = StandardScaler(with_mean=False, with_std=False)
     X = ss.fit_transform(l1)
-    bandwidth = estimate_bandwidth(X, quantile=0.2, n_samples=1000)
+    bandwidth = estimate_bandwidth(X, quantile=0.01, n_samples=1000)
     ms = MeanShift(bandwidth=bandwidth, bin_seeding=True, cluster_all=False, min_bin_freq=15)
     ms.fit(X)
 
