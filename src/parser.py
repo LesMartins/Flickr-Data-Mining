@@ -14,12 +14,11 @@ class FlickrDialect(csv.Dialect):
     quoting = csv.QUOTE_ALL
     skipinitialspace = False
 
-def genMap():
+def genMap(centers, data):
     tmap = pymaps.Map()
     tmap.zoom = 11
     tmap.center = (45.75972, 4.84222)
 
-    data = csv.DictReader(open(config.csv_file_name, "rb"), dialect=FlickrDialect())
     for i, row in enumerate(data):
         if i % 100 == 0:
             legend = """<ul>
