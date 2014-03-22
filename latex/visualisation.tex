@@ -32,13 +32,13 @@ Mais zoomons entre les deux fleuves de Lyon (figure \vref{fig:imprecision}).
     \label{fig:imprecision}
 \end{figure}
 
-On constate que tous les points se trouvent sur des lignes dont la séparation est très nette. Cela est dû à un manque de précision dans nos données de départ. Dans le fichier \textsc{csv} initial, nous remarquons en effet que les coordonnées GPS les plus précises que nous avons ne comportent que 4 chiffres après la virgule, ce qui explique la répartition étrange des points sur des lignes. Nous savons donc que cette erreur aura un impact sur la qualité de nos futurs clusters.
+On constate que tous les points se trouvent sur des lignes dont la séparation est très nette. Cela est dû à un manque de précision dans nos données de départ. Dans le fichier CSV initial, nous remarquons en effet que les coordonnées GPS les plus précises que nous avons ne comportent que 4 chiffres après la virgule, ce qui explique la répartition étrange des points sur des lignes. Nous savons donc que cette erreur aura un impact sur la qualité de nos futurs clusters.
 
 
 \section{Meanshift}
 Nous avons choisi d'appliquer l'algorithme de clustering \textbf{Meanshift}, pour tenter de trouver des clusters géographiques intéressants.
 
-De manière très haut niveau et résumée, l'algorithme de clustering Meanshift peut être résumé comme suit~:
+De manière très haut niveau, l'algorithme de clustering Meanshift peut être résumé comme suit~:
 \begin{itemize}
     \item fixer une fenêtre autour de chaque point~;
     \item calculer la moyenne (le barycentre) des points à l'intérieur de cette fenêtre~;
