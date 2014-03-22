@@ -33,16 +33,23 @@ class GMaps:
     </script>
     """ % (str(self.center), self.zoom, self.div_id, self._points(), self._circles())
 
+
+    def _getIconUrlByColor(self, color):
+        return 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|{}'.format(color)
+
+
     def _points(self):
         string = ''
         for point in self.points:
             string += """
             new google.maps.Marker({
                 position: new google.maps.LatLng %s,
-                map: theMap
-            });""" % (str(point))
+                map: theMap,
+                icon: new google.maps.MarkerImage("%s")
+            });""" % (str(point['coord']), self._getIconUrlByColor(point['color']))
 
         return string
+
 
     def _circles(self):
         string = ''
@@ -59,7 +66,7 @@ class GMaps:
 
 def randomColor():
     r = lambda: random.randint(0, 255)
-    return '#%02X%02X%02X' % (r(),r(),r())
+    return '%02X%02X%02X' % (r(),r(),r())
 
 def genMap(centers, data):
     myMap = GMaps()
@@ -71,11 +78,14 @@ def genMap(centers, data):
         myMap.circles.append({
             'coord': (float(row['x']), float(row['y'])),
             'radius': 10 * math.sqrt(row['number']),
-            'color': row['color']
+            'color': '#%s' % (row['color'])
             })
 
-    #for i, row in enumerate(data):
-    #    if i % 100 == 0:
-    #        myMap.points.append((float(row['latitude']), float(row['longitude'])))
+    for i, row in enumerate(data):
+        if i % 100 == 0:
+            myMap.points.append({
+                'coord': (float(row['latitude']), float(row['longitude'])),
+                'color': centers[row['cluster']]['color']
+                })
 
     return myMap.js()
