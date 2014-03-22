@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import math
+
 class GMaps:
 
     def __init__(self):
@@ -61,6 +63,9 @@ def genMap(centers, data):
     myMap.zoom = 11
 
     for i, row in enumerate(centers):
-        myMap.circles.append({'coord': (float(row['x']), float(row['y'])), 'radius': 500})
+        myMap.circles.append({
+            'coord': (float(row['x']), float(row['y'])),
+            'radius': 10 * math.sqrt(row['number'])
+            })
 
     return myMap.js()

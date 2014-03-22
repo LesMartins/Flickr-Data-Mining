@@ -31,7 +31,7 @@ def meanShift():
 
     centers = list()
     for i, row in enumerate(cluster_centers):
-        centers.append({'cluster': i, 'x': row[0], 'y': row[1]})
+        centers.append({'cluster': i, 'x': row[0], 'y': row[1], 'number': labels.tolist().count(i)})
 
     points = list()
     for i, row in enumerate(X):
