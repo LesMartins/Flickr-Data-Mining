@@ -81,36 +81,36 @@ Notons que si certains cercles (centres de clusters) n'ont aucun point à proxim
 \newpage
 \section{Kmeans}
 
-Pour comparer nos résultats à ceux trouvés par d'autres méthodes de clustering nous avons choisit d'utiliser la méthodes de référence par exellence : Kmeans.
+Pour comparer nos résultats à ceux trouvés par d'autres méthodes de clustering, nous avons choisi d'utiliser la méthode de référence par excellence~: Kmeans.
 
-Cette méthode est une bonne proposition alternative car :
+Cette méthode est une bonne proposition alternative car~:
 \begin{enumerate}
 
-  \item elle est relativement "simple" à mettre en place, elle ne demande comme paramètres qu'un nombre de clusters à trouver et les données à partir desquelles les générer. 
-  \item c'est un méthode qui est utilisée par beaucoup de chercheurs pour comparer leur résultat. Le fait que Kmeans soit familier de la plupart des travailleurs en data mining permet à ces personne de plus facilement detecter les performances demandées par le jeu de données présenté.
-  \item c'est une méthode qui a quelques défauts, ce qui permet, par comparaison, de montrer l'intérêt de meanshift.
+  \item elle est relativement "simple" à mettre en place, elle ne demande comme paramètres qu'un nombre de clusters à trouver et les données à partir desquelles les générer.
+  \item c'est une méthode qui est utilisée par beaucoup de chercheurs pour comparer leurs résultats. Le fait que Kmeans soit familier de la plupart des chercheurs en data mining permet à ces personne de plus facilement détecter les performances demandées par le jeu de données présenté.
+  \item c'est une méthode qui a quelques défauts, ce qui permet, par comparaison, de montrer l'intérêt de Meanshift.
 
 \end{enumerate}
  
-Nous avons donc essayé de reproduire avec kmeans les mêmes conditions que les deux exemples avec meanshift en lancant un kmeans avec en nombre de clusters voulus à peu près ceux trouvés ci-dessus.
+Nous avons donc essayé de reproduire avec Kmeans les mêmes conditions que les deux exemples avec Meanshift en lançant un Kmeans avec un nombre de clusters voulus à peu près équivalent à ceux trouvés ci-dessus.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=16cm]{images/Kmeans1.png}
-    \caption{K means, $nbClusters $ = 25}
+    \caption{K means, $nbClusters = 25$}
     \label{fig:Kmeans1}
 \end{figure}
 
-On remarque que Kmeans trouve, comme meanshift, les petites villes dispercées autour de Lyon. Cependant il parvient à couper le centre ville en plus de clusters. Il semble avoir déjà "répéré" le parc de la tête d'or et commencé à différencier les quartiers de la part dieu de la presqu'ile.
+On remarque que Kmeans trouve, comme Meanshift, les petites villes dispersées autour de Lyon. Cependant il parvient à couper le centre ville en plus de clusters. Il semble avoir déjà repéré le parc de la Tête d'Or et commencé à différencier les quartiers de la Part-Dieu de la presqu'ile.
 \\
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=16cm]{images/Kmeans2.png}
-    \caption{K means, $nbClusters $ = 100}
+    \caption{K means, $nbClusters = 100$}
     \label{fig:Kmeans}
 \end{figure}
 
-Sur cette deuxième figure Kmeans est dépassé en centre ville. Il découpe la presqu'ile et le parc de la tête d'or de manière on peut dire arbitraire sous la formed'un damier.
-Par contre les zones isolées comme l'aéroport de Lyon- Bron sont encore bien idéntifiés comme des cluster à part entière.
-On peuten déduire que Kmeans devient inefficace dans des zones à trop forte densité de données tandis que meanshift ne sert pas à grand chose sans un minimum de précision.
+Sur cette deuxième figure, Kmeans est dépassé en centre ville. Il découpe la presqu'ile et le parc de la tête d'or de manière on peut dire arbitraire sous la forme d'un damier.
+Par contre les zones isolées comme l'aéroport de Lyon-Bron sont encore bien identifiées comme des clusters à part entière.
+On peut en déduire que Kmeans devient inefficace dans des zones à trop forte densité de données tandis que Meanshift ne sert pas à grand chose sans un minimum de précision.
