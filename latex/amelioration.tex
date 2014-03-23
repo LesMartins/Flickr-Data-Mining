@@ -1,0 +1,36 @@
+\chapter{résultats, axe d'amélioration et limites}
+\section{interprétation des résultats}
+
+Notre étude est une clusterisation des espaces en fonction de la localisation géographique.
+\\
+
+Elle peut déjà permettre à la commune du grand Lyon de repérer quels espaces ont tendances à être lieux de photos et quels autres ne le sont absolument pas et ainsi choisir d'appuyer les transports les espaces les plus pris en photo ou au contraire d'essayer de faire découvrir des endroits intéressants méconnus du public.
+
+\section{axes d'amélioration}
+
+En aliant les dates avec la localisation, il pourrait être possible de détecter quels lieux auraient tendance à être plus pris en photo à une certaine période de la journée, du mois ou de l'année.
+\\
+
+En aliant les utilisateurs avec la localisation, il pourrait être possible de détecter des comportements de photos et ainsi de sugérer à un photographe d'autres endroits où ceux qui ont déjà photographié les mêmes lieux ont également été.
+\\
+
+En aliant dates, utilisateur et localisation, il pourrait être possible de déterminer des intinéraires de photos et pourquoi pas d'adapter les transports à ceux-ci.
+\\
+
+Les analyses d'image, de légende et de tag pourraient également être utiles pour identifier ce qui est réélement pris en photo ( enlever les selfies hors sujet, séparer les photos de bâtiments juste à côté de vues au loin, etc.).
+
+\section{limites}
+
+Le plus grand frein au projet a avant tout été le temps. Nous avons disposé de deux séances de 4 heures suivies de deux semaines sans séance pour travailler et rendre le compte rendu de projet. 
+Travaillant en binôme nous avions donc un temps cumulé en séance de 16 heures à nous deux. Malgré la possibilité de travailler hors séance nous n'avons pas non plus pu étendre beaucoup le temps passé sur le pojet, car d'autres projets se présentaient également à l'ordre du jour.
+\\
+
+Le deuxième frein a été les moyens. Pour pouvoir exploiter l'ensemble des données dont nous disposions il aurait fallut pouvoir analyser de manière sémantique les mots employés dans les textes et analyser les informations à partir des photos données. De même les données floues dans les positionnements empèchent de clusteriser de manière optimale, pusique ce manque de précision entraine un fort décalage entre l'echelle des latitudes et des longitudes. Même l'interpretation des différents champs année mois jour heures minutes en type date, bien qu'elle ne soit pas aussi complexe qu'une analyse de texte demande du temps. Il faut trouver la bonne forme sous laquelle convertir et calculer, mais aussi la façon de convertir.
+Il n'est pas infaisable de faire tout cela, mais encore le temps nous a manqué.
+\\
+
+Le troisième frein a été les données. Bien qu'ayant obtenu 84000 lignes d'information et ayant déjà du mal à toutes les afficher, c'était finalement assez peu pour en extraire des vraies tendances et il manquait des informations parfois.
+\\
+
+Enfin le dernier frein, qui cette fois est pourtant positif, est que nous avions choisit de faire le sujet avec des outils différents de la plateforme knime à laquelle nous avions été formés (bien que nous l'ayons exploitée en début de projet pour visualiser la forme des données). Il a donc fallut intégrer dans notre projet la formation aux nouveaux outils employés (Web Api, google map, scikit sous python, méthode meanshift)
+
