@@ -18,5 +18,11 @@ def map():
     the_map = gmaps.genMap(*cluster.meanShift())
     return render_template("map.html", the_map=the_map)
 
+
+@app.route("/othermap")
+def othermap():
+    the_map = gmaps.genMap(*cluster.kmeans())
+    return render_template("map.html", the_map=the_map)
+
 if __name__ == "__main__":
     app.run(debug=True)
