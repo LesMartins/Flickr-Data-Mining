@@ -8,6 +8,14 @@ Parmi les données à problème, il y en avait trois types~:
     \item les données particulières de type "Chine" qui perturbent les échelles en constituant des clusters très à part des autres~;
     \item les données involontairement aberrantes ou incomplètes insérées par les utilisateurs et transmises sous des formats variés.
 \end{itemize}
+\vspace{5mm}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=14cm]{images/captureKnime.png}
+    \caption{Apercu de la préanalayse et de la préparation des données sous knime}
+    \label{fig:knime}
+\end{figure}
 
 \section{Lecture du fichier sur Knime}
 Avant même de pouvoir commencer à regarder les données sur Knime pour faire une première préparation, il a fallu nettoyer les données de manière inattendue. En effet, les données commençant par des balises HTML entrainaient un plantage de la lecture du fichier pour Knime. Il a donc fallu encadrer de guillemets sur le même modèle que d'autres lignes fonctionnelles, les balises fautives.
